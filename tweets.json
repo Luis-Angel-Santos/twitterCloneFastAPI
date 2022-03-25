@@ -1,1 +1,41 @@
-[{"tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa2", "content": "Hola", "created_at": "2022-03-24T19:35:07.823673", "updated_at": "2022-03-25T01:40:34.089Z", "by": {"user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "email": "luis@example.com", "first_name": "string", "last_name": "string", "birth_date": "2022-03-25"}}, {"tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa3", "content": "Hola como estas", "created_at": "2022-03-24T19:35:07.823673", "updated_at": "2022-03-25T01:40:34.089Z", "by": {"user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "email": "angel@example.com", "first_name": "string", "last_name": "string", "birth_date": "2022-03-25"}}]
+[
+    {
+        "by": {
+            "birth_date": "2022-03-25",
+            "email": "luis@example.com",
+            "first_name": "string",
+            "last_name": "string",
+            "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        "content": "Hola",
+        "created_at": "2022-03-24T20:25:31.248758",
+        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa1",
+        "updated_at": "2022-03-25T02:27:23.548Z"
+    },
+    {
+        "by": {
+            "birth_date": "2022-03-25",
+            "email": "angel@example.com",
+            "first_name": "string",
+            "last_name": "string",
+            "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        "content": "Hola 2",
+        "created_at": "2022-03-24T20:25:31.248758",
+        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "updated_at": "2022-03-25T02:27:23.548Z"
+    },
+    {
+        "by": {
+            "birth_date": "2022-03-25",
+            "email": "luis@example.com",
+            "first_name": "string",
+            "last_name": "string",
+            "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        "content": "por favor funciona",
+        "created_at": "2022-03-24 21:13:19.440570",
+        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+        "updated_at": "2022-03-25 03:13:26.801000+00:00"
+    }
+]

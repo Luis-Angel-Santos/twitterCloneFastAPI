@@ -236,8 +236,21 @@ def home():
             summary="Post a Tweet",
             tags=["Tweets"]
         )
-def post_tweet():
-    pass
+def post_tweet(tweet: Tweet = Body(...)):
+    with open("tweets.json", "r+", encoding="utf-8") as f:
+        results = json.loads(f.read())
+        tweet_dict = tweet.dict()
+        tweet_dict["tweet_id"] = str(tweet_dict["tweet_id"])
+        tweet_dict["content"] = str(tweet_dict["content"])
+        tweet_dict["created_at"] = str(tweet_dict["created_at"])        
+        tweet_dict["updated_at"] = str(tweet_dict["updated_at"])
+        tweet_dict["by"] = (tweet_dict["by"])
+        results.append(tweet_dict)
+        f.seek(0)
+        f.write(json.dumps(results, indent=4, sort_keys=True, default=str))
+
+    return tweet
+
 
 ### Show a Tweet
 @app.get(
@@ -296,5 +309,28 @@ def delete_tweet(tweet_id: UUID = Path(
             summary="Update a Tweet",
             tags=["Tweets"]
         )
-def update_tweet():
-    pass
+def update_tweet(tweet_id: UUID = Path(
+                ...,
+                title="Tweet UUID",
+                description="This is the Tweet UUID",
+                example="3fa85f64-5717-4562-b3fc-2c963f66afa8"),
+                tweet: Tweet = Body(...)):
+                """
+    with open("tweets.json", "r", encoding="utf-8") as f:
+        results = json.loads(f.read())
+    tweet_new = tweet.dict()
+    tweet_founded = [tweet for tweet in results if tweet["tweet_id"] == str(tweet_id)][0]
+    index_tweet = results.index(tweet_founded)
+    
+    results[index_tweet]["content"] = str(tweet_new["content"])
+    results[index_tweet]["created_at"] = str(tweet_new["created_at"])
+    results[index_tweet]["updated_at"] = str(tweet_new["updated_at"])
+    
+    with open("tweets.json", "w", encoding="utf-8") as f:
+        f.write(json.dumps(results))
+    return Tweet(tweet_id=str(tweet_id),
+                content=str(tweet_new["content"]),
+                created_at=str(tweet_new["created_at"]),
+                updated_at=str(tweet_new["updated_at"]),
+    )
+"""
