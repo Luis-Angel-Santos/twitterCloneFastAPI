@@ -221,6 +221,22 @@ def update_a_user(user_id: UUID = Path(
             tags=["Tweets"]
         )
 def show_all_teewts():
+    """
+    This path operations shows all users in the app
+
+    - Parameters:
+      None
+    
+    Returns:
+
+    - Description: Returns a json list with all tweets in the app tweets: [ {
+    - tweet_id: UUID
+    - content: str
+    - created_at: str
+    - updated_at: str
+    - by: { DataUser } 
+    } ]
+    """
     with open("tweets.json", "r", encoding="utf-8") as f:
         results = json.loads(f.read())
         return results
@@ -321,11 +337,13 @@ def update_tweet(tweet_id: UUID = Path(
     tweet_new = tweet.dict()
     tweet_founded = [tweet for tweet in results if tweet["tweet_id"] == str(tweet_id)][0]
     index_tweet = results.index(tweet_founded)
-    results[index_tweet]["updated_at"] = str(tweet_new["updated_at"])
     results[index_tweet]["content"] = str(tweet_new["content"])
+    results[index_tweet]["created_at"] = str(tweet_new["created_at"])
+    results[index_tweet]["updated_at"] = str(tweet_new["updated_at"])    
+    results[index_tweet]["by"] = (tweet_new["by"])
     
     with open("tweets.json", "w", encoding="utf-8") as f:
-        f.write(json.dumps(results))
+        f.write(json.dumps(results, indent=4, sort_keys=True, default=str))
     return Tweet(tweet_id=str(tweet_id),
                 content=str(tweet_new["content"]),
                 created_at=str(tweet_new["created_at"]),
